@@ -1,0 +1,25 @@
+/* .row{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:30px;
+}
+
+span{
+  color:red;
+  font-size:30px;
+} */
+
+select{
+  padding:15px 20px;
+  margin:10px;
+  font-size: large;
+  background-color: aquamarine;
+  cursor:pointer;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-spacing: 10px;
+
+}

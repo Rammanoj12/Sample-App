@@ -1,0 +1,70 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  </head>
+<body>
+
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-5 pt-3 m-2 bg-primary text-center">
+      <h1>{{ theWord }}</h1>
+      <button class="btn btn-danger" (click)="changetheword()">Change the text</button>
+    </div>
+  </div>
+
+  <div>
+    <select  title="cars" (ngModelChange)="displayItem($event)" >
+      <option >Select</option>
+      <option *ngFor="let car of automobiles"  [value]="car.Brand">{{car.Brand}}</option>
+    </select>
+  </div>
+
+
+<table class="table table-bordered" >
+  <thead>
+     <tr>
+      <th>Sr no</th>
+      <th>Brand</th>
+      <th>CC</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="selectedAutomobile">
+   <tr >
+    <td>{{ selectedAutomobile.id }}</td>
+    <td>{{selectedAutomobile.Brand}}</td>
+    <td
+    [ngStyle]="{'background-color':selectedAutomobile.CC>1000?'red':'grey'}">{{selectedAutomobile.CC}}</td>
+   </tr>
+  </tbody>
+</table>
+
+
+</body>
+</html> -->
+
+
+  <div class="row">
+    <h1>{{ word }}</h1>
+    <button (click)="onChange()">Click for the change</button>
+  </div>
+
+
+<select title="Automobiles" (change)="displayItem($event)" multiple>
+  <option  *ngFor ="let car of automobiles;let idx=index" [value]="idx">{{car.brand}}</option>
+</select>
+
+
+<table *ngIf="selectType" border="1" >
+  <thead >
+    <th rowspan="2" colspan="3">Sr No</th>
+    <th>Type</th>
+    <th>Brand</th>
+  </thead>
+  <tbody [ngStyle]="{'background-color':selectType.type === 'Car'?'red':'grey'}" >
+    <td rowspan="2" colspan="3">{{selectType.id}}</td>
+    <td>{{selectType.type}}</td>
+    <td>{{selectType.brand}}</td>
+  </tbody>
+</table>

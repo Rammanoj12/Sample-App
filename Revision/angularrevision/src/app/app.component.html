@@ -1,0 +1,205 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reactive Form Example</title>
+</head>
+<body>
+ <form [formGroup]="student">
+   <div class="row">
+    <label for="firstname">Enter the FirstName:</label>
+    <input type="text" id="firstname" formControlName="firstname" required minlength="3" name="firstname"/>
+
+    <div class="error">
+      <span *ngIf="student.get('firstname')?.touched && student.get('firstname')?.errors?.['required']">
+        This is required
+      </span>
+      <span *ngIf="student.get('firstname')?.touched && student.get('firstname')?.errors?.['minlength']">
+        Min 3 length is required
+      </span>
+    </div>
+
+    <label for="lastname">Enter the LastName:</label>
+    <input type="text" id="lastname" formControlName="lastname" required minlength="3" name="lastname"/>
+
+    <div class="error">
+      <span *ngIf="student.get('lastname')?.touched && student.get('lastname')?.errors?.['required']">
+        This is required
+      </span>
+      <span *ngIf="student.get('lastname')?.touched && student.get('lastname')?.errors?.['minlength']">
+        Min 3 length is required
+      </span>
+    </div>
+
+    <label for="email">Enter the email:</label>
+    <input type="text" id="email" formControlName="email" required name="email"/>
+
+    <div class="error">
+      <span *ngIf="student.get('email')?.touched && student.get('email')?.errors?.['required']">
+        This is required
+      </span>
+      <span *ngIf="student.get('email')?.touched && student.get('email')?.errors?.['email']">
+        Invalid email format
+      </span>
+    </div>
+
+    <label for="phonenumber">Enter the PhoneNumber:</label>
+    <input type="text" id="phonenumber" formControlName="phonenumber" required minlength="10" name="phonenumber"/>
+
+    <div class="error">
+      <span *ngIf="student.get('phonenumber')?.touched && student.get('phonenumber')?.errors?.['required']">
+        This is required
+      </span>
+      <span *ngIf="student.get('phonenumber')?.touched && student.get('phonenumber')?.errors?.['minlength']">
+        Min 10 digits are required
+      </span>
+    </div>
+
+    <input type="checkbox" id="check" formControlName="isChecked"/>
+    <label for="check">Agree to the Terms and Conditions</label>
+    <button type="button" (click)="onSubmit()" [disabled]="student.invalid">Submit</button>
+    <button type="button" (click)="onReset()" >Reset</button>
+   </div>
+ </form>
+
+ <div class="result" *ngIf="showresult">
+  <h1>{{student.get('firstname')?.value}}</h1>
+  <h1>{{student.get('lastname')?.value}}</h1>
+  <h1>{{student.get('email')?.value}}</h1>
+  <h1>{{student.get('phonenumber')?.value}}</h1>
+ </div>
+</body>
+</html> -->
+<!-- /////////////////////////////////////////////////// -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ <form [formGroup]="student">
+   <div class="row">
+    <label for="firstname">Enter the FirstName:</label>
+    <input type="text" id="firstname" formControlName="firstname" required minlength="3" name="firstname"/>
+    <div class="error">
+      <span *ngIf="student.controls['firstname'].touched && student.controls['firstname'].errors?.['required']">This is required</span>
+      <span *ngIf="student.controls['firstname'].touched && student.controls['firstname'].errors?.['minlength']">Min 3 length is required</span>
+    </div>
+
+    <label for="lastname">Enter the LastName:</label>
+    <input type="text" id="lastname" formControlName="lastname" required minlength="3" name="lastname"/>
+    <div class="error">
+      <span *ngIf="student.controls['lastname'].touched && student.controls['lastname'].errors?.['required']">This is required</span>
+      <span *ngIf="student.controls['lastname'].touched && student.controls['lastname'].errors?.['minlength']">Min 3 length is required</span>
+    </div>
+
+    <label for="email">Enter the email:</label>
+    <input type="text" id="email" formControlName="email" required minlength="3" name="email"/>
+    <div class="error">
+      <span *ngIf="student.controls['email'].touched && student.controls['email'].errors?.['required']">This is required</span>
+      <span *ngIf="student.controls['email'].touched && student.controls['email'].errors?.['minlength']">Min 3 length is required</span>
+    </div>
+
+    <label for="phonenumber">Enter the PhoneNumber:</label>
+    <input type="text" id="phonenumber" formControlName="phonenumber" required minlength="10" name="phonenumber"/>
+    <div class="error">
+      <span *ngIf="student.controls['phonenumber'].touched && student.controls['phonenumber'].errors?.['required']">This is required</span>
+      <span *ngIf="student.controls['phonenumber'].touched && student.controls['phonenumber'].errors?.['minlength']">Min student length is required</span>
+    </div>
+
+    <input type="checkbox" id="check" formControlName="isChecked"/>
+    <label for="check">Agree to the Terms and Conditions</label>
+
+    <button type="button" (click)="onSubmit()" [disabled]="student.invalid">Submit</button>
+    <button type="button" (click)="onReset()">Reset</button>
+   </div>
+ </form>
+
+ <div class="result" *ngIf="showresult">
+  <h1>{{student.get('firstname')?.value}}</h1>
+  <h1>{{student.get('lastname')?.value}}</h1>
+  <h1>{{student.get('email')?.value}}</h1>
+  <h1>{{student.get('phonenumber')?.value}}</h1>
+ </div>
+</body>
+</html> -->
+
+
+<!-- ------------------------------------------------------------------------- -->
+<!-- This is dropdown and table rendering to proper handle the data binding and event handling -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automobile Selection</title>
+</head>
+<body>
+  <div class="row">
+    <select title="vehicles" (change)="onChange($event)">
+      <option *ngFor="let item of automobiles; let idx = index" [value]="idx">{{item.brand}}</option>
+    </select>
+  </div>
+
+
+    <table style="border-spacing: 100px; border: 2px solid; border-collapse: collapse" class="tablerow" *ngIf="selectedtype">
+      <thead>
+        <tr>
+          <th>Sl No</th>
+          <th>Brand</th>
+          <th>Price</th>
+          <th>Vehicle Type</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr [ngStyle]="{'background-color':selectedtype.type === 'Heavymotor'?'red':'grey'}" >
+          <td>{{selectedtype.id}}</td>
+          <td>{{selectedtype.brand}}</td>
+          <td>{{selectedtype.price}}</td>
+          <td>{{selectedtype.type}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+</body>
+</html> -->
+
+<!-- =-------------------------------------------------------- -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div class="row">
+  <div class="get-container">
+   <button (click)="onGetAllUsers()">Click me</button>
+  </div>
+  <div class="form" >
+    <ul *ngFor="let pokemon  of userList">
+      <li>{{pokemon.name}}</li>
+    </ul>
+
+  </div>
+ </div> -->
+
+ <!-- <div class="row">
+
+    <label for="departmentName">Enter the name:</label>
+    <input type="text" [(ngModel)]="departmentObj.departmentName"   placeholder="Enter the name"/>
+    <label for="departmentLogo">Enter the url:</label>
+    <input type="text" [(ngModel)]="departmentObj.departmentLogo"  placeholder="Enter the image url"/>
+
+    <button (click)="onSave()">Save this data</button>
+
+
+ </div>
+</body>
+</html> -->
+<router-outlet></router-outlet>

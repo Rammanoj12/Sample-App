@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./reactive-form.component.css"/>
+</head>
+<body>
+  <div class="row">
+    <form  [formGroup]="studentList">
+      <label for="first">Enter the First Name:</label>
+      <input type="text" id="first" name="firstname" formControlName="firstname"   >
+      <div>
+        @if(studentList.controls['firstname'].touched && studentList.controls['firstname'].errors?.['']){
+          <span>This is </span>
+        }@else if(studentList.controls['firstname'].touched && studentList.controls['firstname'].errors?.['minlength']){
+          <span>Min char 3 is </span>
+        }
+      </div>
+
+      <label for="last">Enter the Last Name:</label>
+      <input type="text" id="last" name="lastname" formControlName="lastname"   />
+      <div>
+        @if(studentList.controls['lastname'].touched && studentList.controls['lastname'].errors?.['']){
+          <span>This is </span>
+        }@else if(studentList.controls['lastname'].touched && studentList.controls['lastname'].errors?.['minlength']){
+          <span>Min char 3 is </span>
+        }
+      </div>
+
+      <label for="emailid">Enter the email address:</label>
+      <input type="email" id="emailid" name="email" formControlName="email"  />
+      <div>
+        @if(studentList.controls['email'].touched && studentList.controls['email'].errors?.['']){
+          <span>This is </span>
+        }@else if(studentList.controls['email'].touched && studentList.controls['email'].errors?.['minlength']){
+          <span>Min char 3 is </span>
+        }
+      </div>
+
+      <label for="phone">Enter the phone number:</label>
+      <input type="text" id="phone" name="phoneNumber" formControlName="phonenumber"   />
+
+      <input type="checkbox" id="check" name="isChecked" formControlName="isChecked" />
+      <label for="check">I Accept the terms and conditions</label>
+
+      <button type="button" >Clear</button>
+      <button (click)="onSubmit()" [disabled]="studentList.invalid">Submit</button>
+    </form>
+  </div>
+  <div>
+    <table *ngIf="isDisplay" >
+      <thead>  
+        <tr >
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Phone Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stud of formValue">
+          <td >{{ stud.firstname }}</td>
+          <td >{{ stud.lastname }}</td>
+          <td >{{ stud.email }}</td>
+          <td >{{ stud.phonenumber }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <h1>{{formValue|json}}</h1> -->
+  </div>
+</body>
+</html>
+

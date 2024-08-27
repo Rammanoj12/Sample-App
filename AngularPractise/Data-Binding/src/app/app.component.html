@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./app.component.css"/>
+</head>
+<body>
+  <div class="row">
+    <form (ngSubmit)="onSubmit()" #studentForm="ngForm">
+      <label for="first">Enter the First Name:</label>
+      <input type="text" id="first" name="firstname" #fname="ngModel" [(ngModel)]="student.firstname" required minlength="3">
+      <div>
+        <span *ngIf="(fname.touched || fname.dirty) && fname.errors?.['required']">This is required</span>
+        <span *ngIf="(fname.touched || fname.dirty) && fname.errors?.['minlength']">Min 3 chars required</span>
+      </div>
+
+      <label for="last">Enter the Last Name:</label>
+      <input type="text" id="last" name="lastname" #lname="ngModel" [(ngModel)]="student.lastname" required minlength="3"/>
+      <div>
+        <span *ngIf="(lname.touched || lname.dirty) && lname.errors?.['required']">This is required</span>
+        <span *ngIf="(lname.touched || lname.dirty) && lname.errors?.['minlength']">Min 3 chars required</span>
+      </div>
+
+      <label for="emailid">Enter the email address:</label>
+      <input type="email" id="emailid" name="email" #email="ngModel" [(ngModel)]="student.email" required/>
+      <div>
+        <span *ngIf="(email.touched || email.dirty) && email.errors?.['required']">This is required</span>
+        <span *ngIf="(email.touched || email.dirty) && email.errors?.['minlength']">Min 3 chars required</span>
+      </div>
+
+      <label for="phone">Enter the phone number:</label>
+      <input type="text" id="phone" name="phoneNumber" [(ngModel)]="student.phoneNumber" required/>
+
+      <input type="checkbox" id="check" name="isChecked" [(ngModel)]="student.isChecked" required/>
+      <label for="check">I Accept the terms and conditions</label>
+
+      <button type="button" (click)="onClear()">Clear</button>
+      <button type="submit" [disabled]="studentForm.invalid">Submit</button>
+    </form>
+  </div>
+  <div>
+    <table *ngIf="isDisplay" >
+      <thead>
+        <tr >
+          <th colspan="3" >First Name</th>
+          <th colspan="2" >Last Name</th>
+          <th colspan="2" >Email</th>
+          <th colspan="2" >Phone Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stud of formvalue">
+          <td colspan="3" >{{ stud.firstname }}</td>
+          <td colspan="2" >{{ stud.lastname }}</td>
+          <td colspan="2"  >{{ stud.email }}</td>
+          <td colspan="2" >{{ stud.phoneNumber }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

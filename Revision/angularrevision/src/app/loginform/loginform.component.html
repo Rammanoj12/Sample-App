@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <div class="row">
+    <label for="username" >Enter the user name:</label>
+    <input name="username" id="username" [(ngModel)]="userobj.username" #uname="ngModel" required minlength="5"/>
+     <span *ngIf="(uname.touched || uname.dirty )&& uname.errors?.['required']">This is required</span>
+     <span *ngIf="(uname.touched || uname.dirty) && uname.errors?.['minlength']">Min 3 char required</span>
+
+     <label for="password" >Enter the password:</label>
+     <input name="password" id="password" [(ngModel)]="userobj.password" #passwd="ngModel" required minlength="5"/>
+      <span *ngIf="(passwd.touched || passwd.dirty )&& passwd.errors?.['required']">This is required</span>
+      <span *ngIf="(passwd.touched || passwd.dirty) && passwd.errors?.['minlength']">Min 3 char required</span>
+     <button (click)="openHomePage()">Sign in </button>
+   </div>
+</body>
+</html>

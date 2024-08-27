@@ -1,0 +1,17 @@
+.row{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+span{
+  color:red;
+  font-size:20px;
+}
+
+button{
+  padding:10px;
+  background-color: rgb(223, 70, 70);
+  color:white;
+  font-size: 10px;
+}
